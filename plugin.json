@@ -1,0 +1,9 @@
+{
+  "key": "shazzoo/employees",
+  "slug": "employees",
+  "name": "Employees",
+  "description": "Manage employees and place an employee directory block on a page.",
+  "author": "Shazzoo",
+  "provider": "Shazzoo\\Employees\\EmployeesServiceProvider",
+  "class": "Shazzoo\\Employees\\Plugin"
+}
