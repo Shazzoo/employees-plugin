@@ -57,7 +57,7 @@ final class EmployeeResource extends Resource
             ->columns([
                 TextColumn::make('name')->searchable()->sortable(),
                 TextColumn::make('role')->searchable()->sortable(),
-                TextColumn::make('skills')->badge()->listWithLineBreaks(),
+                TextColumn::make('skills')->badge(),
             ])
             ->actions([
                 EditAction::make(),
