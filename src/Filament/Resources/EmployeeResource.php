@@ -13,6 +13,7 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use FinnWiel\ShazzooMedia\Components\Forms\ShazzooMediaPicker;
+use Shazzoo\ContentStudioCore\Filament\Forms\LocaleFields;
 use Shazzoo\Employees\Filament\Resources\EmployeeResource\Pages;
 use Shazzoo\Employees\Models\Employee;
 
@@ -32,6 +33,8 @@ final class EmployeeResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->columns(2)->schema([
+            LocaleFields::locale(),
+            LocaleFields::translationOf(Employee::class, 'name'),
             ShazzooMediaPicker::make('image_id')
                 ->label('Image')
                 ->conversions(['profile', 'thumbnail'])
@@ -56,8 +59,12 @@ final class EmployeeResource extends Resource
             ->defaultSort('name')
             ->columns([
                 TextColumn::make('name')->searchable()->sortable(),
+                LocaleFields::column(),
                 TextColumn::make('role')->searchable()->sortable(),
                 TextColumn::make('skills')->badge(),
+            ])
+            ->filters([
+                LocaleFields::filter(),
             ])
             ->actions([
                 EditAction::make(),

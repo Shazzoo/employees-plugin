@@ -8,6 +8,7 @@
         : null;
     $employees = Employee::query()
         ->with('image')
+        ->forLocale()
         ->orderBy('name')
         ->when($limit !== 'all', fn ($query) => $query->limit((int) $limit))
         ->get();
