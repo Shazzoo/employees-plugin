@@ -25,12 +25,14 @@ final class Employee extends Model
         'name',
         'role',
         'skills',
+        'sort_order',
     ];
 
     protected function casts(): array
     {
         return [
             'skills' => 'array',
+            'sort_order' => 'integer',
         ];
     }
 

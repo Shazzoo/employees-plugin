@@ -48,6 +48,23 @@ final class EmployeesBlockDefinition
                     ])
                     ->default('all')
                     ->columnSpan(6),
+                TextInput::make('contact_label')
+                    ->label('Contact cell — label')
+                    ->helperText('Optional last cell in the grid that invites visitors to get in touch.')
+                    ->placeholder('Meet us')
+                    ->columnSpan(6),
+                TextareaField::make('contact_body')
+                    ->label('Contact cell — text')
+                    ->rows(2)
+                    ->columnSpan(12),
+                TextInput::make('contact_button_label')
+                    ->label('Contact cell — button')
+                    ->placeholder('Plan a call')
+                    ->columnSpan(6),
+                TextInput::make('contact_button_url')
+                    ->label('Contact cell — link')
+                    ->placeholder('/contact')
+                    ->columnSpan(6),
             ]);
     }
 }

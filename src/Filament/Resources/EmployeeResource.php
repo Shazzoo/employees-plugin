@@ -56,7 +56,8 @@ final class EmployeeResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->defaultSort('name')
+            ->defaultSort('sort_order')
+            ->reorderable('sort_order')
             ->columns([
                 TextColumn::make('name')->searchable()->sortable(),
                 LocaleFields::column(),

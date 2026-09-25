@@ -9,6 +9,7 @@
     $employees = Employee::query()
         ->with('image')
         ->forLocale()
+        ->orderBy('sort_order')
         ->orderBy('name')
         ->when($limit !== 'all', fn ($query) => $query->limit((int) $limit))
         ->get();
@@ -56,6 +57,19 @@
                         <p class="text-[14px] text-muted">No employees have been added yet.</p>
                     </div>
                 @endforelse
+
+                @if (filled($data['contact_label'] ?? null) || filled($data['contact_button_label'] ?? null))
+                    <div class="flex flex-col justify-between gap-4 border-b border-r border-hairline px-5 py-6">
+                        <div>
+                            <p class="cs-label">{{ $data['contact_label'] ?? '' }}</p>
+                            <p class="mt-3 text-[15px] leading-normal">{{ $data['contact_body'] ?? '' }}</p>
+                        </div>
+
+                        @if (filled($data['contact_button_label'] ?? null))
+                            <a href="{{ $data['contact_button_url'] ?? '/contact' }}" class="cs-btn">{{ $data['contact_button_label'] }}</a>
+                        @endif
+                    </div>
+                @endif
             </div>
 
             @if (filled($data['note'] ?? null))
