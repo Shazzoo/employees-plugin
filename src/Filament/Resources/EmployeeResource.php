@@ -37,7 +37,7 @@ final class EmployeeResource extends Resource
             LocaleFields::translationOf(Employee::class, 'name'),
             ShazzooMediaPicker::make('image_id')
                 ->label('Image')
-                ->conversions(['profile', 'thumbnail'])
+                ->conversions(['profile', 'thumbnail', 'medium'])
                 ->required()
                 ->columnSpanFull(),
             TextInput::make('name')
