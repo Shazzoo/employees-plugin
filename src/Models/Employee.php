@@ -47,7 +47,7 @@ final class Employee extends Model
     {
         if (is_string($skills)) {
             $decodedSkills = json_decode($skills, true);
-            $skills = is_array($decodedSkills) ? $decodedSkills : explode(',', $skills);
+            $skills = is_array($decodedSkills) ? $decodedSkills : explode(',', is_string($decodedSkills) ? $decodedSkills : $skills);
         }
 
         if (! is_array($skills)) {
